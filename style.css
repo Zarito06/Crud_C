@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital@1&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Georama', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    color: black;
+    background: linear-gradient(to left, #74C69D 0%, #B7E4C7 46%, #95D5B2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+main{
+    width: 1240px;
+    display: grid;
+    align-items: center;
+}
+/*Titulo*/
+.title{
+    max-width: 1000px;
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+}
+/*Slider Nav*/
+.container{
+    max-width: 1000px;
+    width: 100%;
+    background-color: white;
+    padding: 30px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container nav{
+    position: relative;
+    height: 50px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container nav::after{
+    content:"";
+    background: #2ec572;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 47px;
+    filter: blur(0.5pxs);
+}
+.container nav label{
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+#PP:checked ~ nav label .PP,
+#SS:checked ~ nav label .SS{
+ color: #5ddd96;
+}
+input[type='radio']{
+    display: none;
+}
+.container nav .slider{
+    position: absolute;
+    height: 4.5px;
+    background-color: #2d6a4f;
+    border-radius: 20px;
+    width: 49%;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    transition: all 0.3s ease;
+    filter: blur(0.4px);
+}
+#SS:checked ~ nav .slider{
+    left: 50%;
+}
+#PP:checked ~ nav .PP,
+#SS:checked ~ nav .SS{
+    color: #5ddd96;
+}
+.Contenido{
+    filter: blur(0.3px);
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Contenido .content{
+    display: none;
+    margin-bottom: 20px;
+}
+#PP:checked ~ .Contenido .content-1,
+#SS:checked ~ .Contenido .content-2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Formulario*/
+.user-table{
+background: linear-gradient(43deg, #ffffff #B7E4C7);
+}
+input{
+    color:black;
+}
+select, option{
+color: black;
+}

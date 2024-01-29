@@ -76,7 +76,7 @@ $servicio = mysqli_query($sev, $ser);
                 <option value="Universidad">Universidad</option>
                 <option value="Empresa">Empresas</option>
                 <option value="Asosiaciones">Asociaciones civiles</option>
-                <option value="Hoteles y restaurates"> Hotelles y restaurates</option>
+                <option value="Hoteles y restaurates"> Hoteles y restaurates</option>
             </select>
             <input type="text" name="ubicacion" placeholder="inserte la direccion del lugar">
             <input type="text" name="telefono" placeholder="inserte la direccion del lugar" maxlength=10 pattern="[0-9]+" >

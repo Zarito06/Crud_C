@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+input .menu:checked ~ main{
+    transform: translateX(550px);
+}
+
 body{
     color: black;
     background: linear-gradient(to left, #74C69D 0%, #B7E4C7 46%, #95D5B2 100%);
@@ -16,18 +20,20 @@ body{
     justify-content: center;
     
 }
+
 main{
     width: 1240px;
-    display: grid;
+    display: contents;
     align-items: center;
 }
+
 /*Titulo*/
 .title{
     max-width: 1000px;
     width: 100%;
     height: 2rem;
     background-color: white;
-    display: grid;
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px 10px 0 0;

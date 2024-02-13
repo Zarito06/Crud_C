@@ -4,9 +4,15 @@ $con = conexion();
 $sql ="SELECT * FROM d_practicas";
 $query = mysqli_query($con, $sql);
 
-$sev = conexion();
+$con = conexion();
 $ser  ="SELECT * FROM d_servicio";
-$servicio = mysqli_query($sev, $ser);
+$servicio = mysqli_query($con, $ser);
+
+$con = conexion();
+$direct = "SELECT DISTINCT d_codigo FROM directorio";
+$directorio = mysqli_query($con, $direct);
+
+$col = "SELECT * FROM directorio WHERE d_codigo = $"
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +20,58 @@ $servicio = mysqli_query($sev, $ser);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
     <title>Document</title>
 </head>
 <body>
-    <main>
+
+<!------------------------------------menu-------------------------------------------------->
+<header>
+
+<img src="Logo-CECyTE.png">
+</header>
+<nav id="nav">
+    
+<input type="checkbox" id="menu-toggle" class="menu"/>
+    <label id="trigger" for="menu-toggle"></label>
+    <label id="burger" for="menu-toggle"></label>
+
+<ul class="gfd">
+    
+
+    <li><p>Servicio</p>
+        <ul class="submenu">
+            <li> <a href=""> PROG A </a> </li>
+            <li> <a href=""> PROG B </a> </li>
+            <li> <a href=""> TRAP A </a> </li>
+            <li> <a href=""> TRAP B </a> </li>
+        </ul>
+    </li>
+
+    <li> <p>Practicas</p>
+        <ul class="submenu"> 
+            <li> <a href=""> PROG A </a> </li>
+            <li> <a href=""> PROG B </a> </li>
+            <li> <a href=""> TRAP A </a> </li>
+            <li> <a href=""> TRAP B </a> </li>
+        </ul>
+    </li>
+    
+    <li><p><a href="">Instituciones</a></p></li>
+    
+    <li> <p><a href="">Documentos</a></p></li>
+    
+    <li> <p class="ssd"><a href="">Entrega de Documentos</a></p></li>
+
+
+</ul>
+</nav>
+
+<!------------------------------------------------------------------------------------------>
+<main display:contents>
     <div class="title">
         <h2>Instituciones o dependencias</h2>
         <div class="linear"></div>
@@ -70,16 +123,29 @@ $servicio = mysqli_query($sev, $ser);
     <div class="user-form">
         <h2>Agregar</h2>
         <form action="insert_user.php" method="post">
+            <fieldset>
             <input type="text" name="nombre" placeholder="Nombre de la dependencia">
             <select name="categoria" >
                 <option value="">Selecione una Opcion</option>
                 <option value="Universidad">Universidad</option>
                 <option value="Empresa">Empresas</option>
                 <option value="Asosiaciones">Asociaciones civiles</option>
-                <option value="Hoteles y restaurates"> Hoteles y restaurates</option>
+                <option value="Hoteles y restaurates"> Hotelles y restaurates</option>
             </select>
-            <input type="text" name="ubicacion" placeholder="inserte la direccion del lugar">
+            <input type="text" name="calle" placeholder="Calle">
+            <select>
+            <?php while($fil = mysqli_fetch_array($directorio)): ?>
+            
+                <option value="<?= $fil['d_codigo']?>"><?= $fil['d_codigo']?></option>
+            
+            <?php endwhile; ?>
+            </select>
+            <input type="text" name="colonia" placeholder="Colonia">
+            <input type="text" name="delegacion" placeholder="Delegacion">
+            <input type="text" name="Municipio" placeholder="Municipio">
+            <input type="text" name="Estado" placeholder="Estado">
             <input type="text" name="telefono" placeholder="inserte la direccion del lugar" maxlength=10 pattern="[0-9]+" >
+            <input type="email" name="correo" placeholder="Correo Eletronico">
             <select name="vigencia" id="" placeholder="Vigencia">
                 <option value="">Seleciona una Opcion</option>
                 <option value="Abierta">Abierta</option>
@@ -87,6 +153,7 @@ $servicio = mysqli_query($sev, $ser);
                 <option value="Renovada">Renovada</option>
             </select>
             <input type="submit" value="Agregar" >  
+            </fieldset>
         </form>
     </div>
     </div>

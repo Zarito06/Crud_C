@@ -2,9 +2,9 @@
 include("Conexion.php");
 $sev = conexion();
 
-$id = $_GET['id_s'];
+$id = $_GET['id'];
 
-$ser = "SELECT * FROM d_servicio WHERE id_s='$id'";
+$ser = "SELECT * FROM d_servicio WHERE id='$id'";
 $servicio = mysqli_query($sev, $ser);
 $rawr = mysqli_fetch_array($servicio);
 ?>
@@ -15,9 +15,60 @@ $rawr = mysqli_fetch_array($servicio);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' href="https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="estilo.css">
     <title>Document</title>
 </head>
 <body>     
+
+
+
+<!------------------------------------menu-------------------------------------------------->
+<header>
+
+<img src="Logo-CECyTE.png">
+</header>
+<nav id="nav">
+    
+<input type="checkbox" id="menu-toggle" class="menu"/>
+    <label id="trigger" for="menu-toggle"></label>
+    <label id="burger" for="menu-toggle"></label>
+
+<ul class="gfd">
+    
+
+    <li><p>Servicio</p>
+        <ul class="submenu">
+            <li> <a href=""> PROG A </a> </li>
+            <li> <a href=""> PROG B </a> </li>
+            <li> <a href=""> TRAP A </a> </li>
+            <li> <a href=""> TRAP B </a> </li>
+        </ul>
+    </li>
+
+    <li> <p>Practicas</p>
+        <ul class="submenu"> 
+            <li> <a href=""> PROG A </a> </li>
+            <li> <a href=""> PROG B </a> </li>
+            <li> <a href=""> TRAP A </a> </li>
+            <li> <a href=""> TRAP B </a> </li>
+        </ul>
+    </li>
+    
+    <li><p><a href="">Instituciones</a></p></li>
+    
+    <li> <p><a href="">Documentos</a></p></li>
+    
+    <li> <p class="ssd"><a href="">Entrega de Documentos</a></p></li>
+
+
+</ul>
+</nav>
+
+<!------------------------------------------------------------------------------------------>
+
+
     <div class="user-form">
         <form action="edit_ser.php" method="POST">
             <input type="hidden" name="id_s" value="<?= $rawr['id_s']?>">
